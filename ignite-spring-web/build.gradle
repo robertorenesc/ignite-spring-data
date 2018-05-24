@@ -1,0 +1,9 @@
+dependencies {
+	compile project(':ignite-spring-core')
+	compile 'org.apache.ignite:ignite-core:2.4.0'
+	compile 'org.apache.ignite:ignite-spring:2.4.0'
+	compile 'org.apache.ignite:ignite-spring-data:2.4.0'
+	compile 'org.apache.ignite:ignite-indexing:2.4.0'
+	compile 'mysql:mysql-connector-java:8.0.11'
+	compile 'org.projectlombok:lombok:1.16.20'
+}
