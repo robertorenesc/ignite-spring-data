@@ -7,6 +7,6 @@
  * in the user guide at https://docs.gradle.org/4.7/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'ignite-spring-data'
+rootProject.name = "ignite-spring-data"
 
 include ":ignite-spring-core", ":ignite-spring-web"

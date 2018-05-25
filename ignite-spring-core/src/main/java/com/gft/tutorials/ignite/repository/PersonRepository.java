@@ -1,4 +1,4 @@
-package com.gft.tutorials.ignite.repositories;
+package com.gft.tutorials.ignite.repository;
 
 import java.util.List;
 
@@ -10,10 +10,8 @@ import com.gft.tutorials.ignite.model.Person;
 @RepositoryConfig(cacheName = "PersonCache")
 public interface PersonRepository extends IgniteRepository<Person, Long> {
 
-	Person getPersonById(Long id);
-	
 	List<Person> findByFirstName(String name);
 	
-	List<Person> findByLastName(String name);
+	// List<Person> findByLastName(String name);
 	
 }

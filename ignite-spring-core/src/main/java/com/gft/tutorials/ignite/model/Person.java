@@ -22,7 +22,6 @@ public class Person implements Serializable {
 	@QuerySqlField(index = true)
 	private Long lastName;
 	
-	@QuerySqlField(index = true)
 	private Integer age;
 	
 }
