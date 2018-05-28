@@ -1,17 +1,18 @@
-CREATE DATABASE ignite_spring;
+CREATE DATABASE `ignite_spring`;
 
-USE ignite_spring;
+USE `ignite_spring`;
 
-CREATE TABLE person (
-  	id int(11) NOT NULL AUTO_INCREMENT,
-  	age int(11) DEFAULT NULL,
-  	first_name varchar(255) NOT NULL,
-  	last_name varchar(255) NOT NULL,
-  	PRIMARY KEY (id)
+CREATE TABLE `person` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ss_number` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `update_ts` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 );
 
-INSERT INTO person(first_name, last_name, age) VALUES('Thomas','Edison',84);
-INSERT INTO person(first_name, last_name, age) VALUES('Nicola','Tesla', 86);
-INSERT INTO person(first_name, last_name, age) VALUES('James','Maxwell', 48);
-INSERT INTO person(first_name, last_name, age) VALUES('Albert','Enstein', 76);
-INSERT INTO person(first_name, last_name, age) VALUES('Stephen','Hawking', 76);
+CREATE TRIGGER `ignite_spring`.`person_BEFORE_UPDATE` BEFORE UPDATE ON `person` FOR EACH ROW
+BEGIN
+    SET NEW.update_ts = CURRENT_TIMESTAMP;
+END

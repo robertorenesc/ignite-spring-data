@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    name: mysqlds
-    url: jdbc:mysql://personal-development-gft.cstjqln4haqy.us-east-1.rds.amazonaws.com:33306/ignite_spring?useSSL=false
-    username: developer
-    password: developer123

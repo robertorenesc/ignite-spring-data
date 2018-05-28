@@ -1,5 +1,5 @@
 buildscript {
-
+	
 	repositories {
  		mavenCentral()
   	}
@@ -7,44 +7,43 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
     }
-    
 }
 
-allprojects {
-
-   	group = "com.gft.tutorials"
-   	version = "0.0.1"
-   	
-   	apply plugin: "java"
-   	apply plugin: "eclipse"
-   	apply plugin: "io.spring.dependency-management"
-   	
-   	sourceCompatibility = 1.8
-	targetCompatibility = 1.8
-
-   	repositories {
- 		mavenCentral()
-  	}
-   	
-   	ext {
-   		springBootVersion = "2.0.2.RELEASE"
-   		apacheIgniteVersion = "2.4.0"
-   		mysqlConnectorVersion = "8.0.11"
-   		lombokVersion = "1.16.20"
-   		
-   	}
-   	
-   	dependencyManagement {
-    	dependencies {
-   			dependency "org.apache.ignite:ignite-core:$apacheIgniteVersion"
-			dependency "org.apache.ignite:ignite-spring:$apacheIgniteVersion"
-			dependency "org.apache.ignite:ignite-spring-data:$apacheIgniteVersion"
-			dependency "org.apache.ignite:ignite-indexing:$apacheIgniteVersion"
-			dependency "mysql:mysql-connector-java:$mysqlConnectorVersion"
-			dependency "org.projectlombok:lombok:$lombokVersion"
-			dependency "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
-			dependency "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
-			dependency "org.springframework.boot:spring-boot-starter-data-jpa:1.5.13.RELEASE"
-   		}
-   	}
+repositories {
+	mavenCentral()
+	maven {
+    	url "https://repository.apache.org/content/groups/staging"
+    }
 }
+
+apply plugin: "java"
+apply plugin: "eclipse"
+apply plugin: "org.springframework.boot"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+bootJar {
+	mainClassName  "com.gft.example.ignite.main.Application"
+}
+
+ext {
+	springBootVersion = "1.5.13.RELEASE"
+	springDataVersion = "1.5.13.RELEASE"
+	apacheIgniteVersion = "2.5.0"
+}
+
+dependencies {
+	// Spring dependencies
+	compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+	compile "org.springframework.boot:spring-boot-starter-data-jpa:$springDataVersion"
+	// Apache Ignite dependencies
+	compile "org.apache.ignite:ignite-core:$apacheIgniteVersion"
+	compile "org.apache.ignite:ignite-spring:$apacheIgniteVersion"
+	compile "org.apache.ignite:ignite-spring-data:$apacheIgniteVersion"
+	compile "org.apache.ignite:ignite-indexing:$apacheIgniteVersion"
+	// Specific dependencues
+	compile "mysql:mysql-connector-java:8.0.11"
+	compile "org.projectlombok:lombok:1.16.20"
+}
+
