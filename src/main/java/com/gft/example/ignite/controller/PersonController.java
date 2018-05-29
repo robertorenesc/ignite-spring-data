@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gft.example.ignite.service.PersonService;
 
 @RestController
-@RequestMapping("/persons")
+@RequestMapping("/person")
 public class PersonController {
 
 	private PersonService personService;
